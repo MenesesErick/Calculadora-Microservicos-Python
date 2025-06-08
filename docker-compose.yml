@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  servico-soma:
+    build: ./servico_soma
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./servico_soma:/app
+    # O comando abaixo instala as dependências e inicia o serviço
+    command: sh -c "pip install -r requirements.txt && python app.py"
+
+  servico-subtracao:
+    build: ./servico_subtracao
+    ports:
+      - "5002:5002"
+    volumes:
+      - ./servico_subtracao:/app
+    # O comando abaixo instala as dependências e inicia o serviço
+    command: sh -c "pip install -r requirements.txt && python app.py"
